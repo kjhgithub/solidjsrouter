@@ -20,7 +20,7 @@ function LinkList() {
           href="/impressum"
           data-twe-nav-link-ref
         >
-          Link 2
+          Impressum
         </A>
       </li>
       <li class="my-4 ps-2 lg:my-0 lg:pe-1 lg:ps-2" data-twe-nav-item-ref>
