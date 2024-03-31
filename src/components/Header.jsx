@@ -1,14 +1,13 @@
 import { createSignal, onCleanup, onMount, createEffect } from "solid-js";
-import { useNavigate } from "@solidjs/router";
+// import { useNavigate } from "@solidjs/router";
 import LinkList from "./LinkList";
 import { Collapse, Dropdown, Ripple, initTWE } from "tw-elements";
 import logo from "../assets/logo.svg";
 
-function Header() {
+function Header({ onNavigate }) {
   //
   function buttonNav() {
-    const navigate = useNavigate();
-    navigate("/");
+    onNavigate("/");
   }
 
   // createSignal for NavigationList ID
