@@ -1,20 +1,18 @@
+import { lazy } from "solid-js";
 import { render } from "solid-js/web";
-import { Router, Route } from "@solidjs/router";
+import { HashRouter, Route } from "@solidjs/router";
 import "./app.css";
-const root = document.getElementById("root");
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
-import Impressum from "./pages/Impressum";
 import NotFound from "./pages/404";
+const Impressum = lazy(() => import("./pages/Impressum"));
 
-function App() {
+function App(props) {
   return (
     <>
       <Header />
-      <Route path="/" component={Home} />
-      <Route path="/impressum" component={Impressum} />
-      <Route path="*404" component={NotFound} />
+      {props.children}
       <Footer />
     </>
   );
@@ -22,9 +20,11 @@ function App() {
 
 render(
   () => (
-    <Router>
-      <App />
-    </Router>
+    <HashRouter root={App}>
+      <Route path="/impressum" component={Impressum} />
+      <Route path="*404" component={NotFound} />
+      <Route path="/" component={Home} />
+    </HashRouter>
   ),
-  root
+  document.getElementById("App")
 );

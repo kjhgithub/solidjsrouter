@@ -1,9 +1,16 @@
 import { createSignal, onCleanup, onMount, createEffect } from "solid-js";
+import { useNavigate } from "@solidjs/router";
 import LinkList from "./LinkList";
 import { Collapse, Dropdown, Ripple, initTWE } from "tw-elements";
 import logo from "../assets/logo.svg";
 
 function Header() {
+  //
+  function buttonNav() {
+    const navigate = useNavigate();
+    navigate("/");
+  }
+
   // createSignal for NavigationList ID
   const [navDiv, setNavDiv] = createSignal();
 
@@ -70,6 +77,15 @@ function Header() {
 
   return (
     <>
+      {" "}
+      <div className="container mx-auto flex flex-nowrap items-center justify-center p-2">
+        <div
+          className="rounded bg-primary text-white min-w-[150px] font-semibold text-center p-2"
+          onClick={buttonNav}
+        >
+          Test
+        </div>
+      </div>
       <nav
         class="lg:container lg:mx-auto relative flex w-full flex-nowrap items-center justify-between bg-zinc-50 py-2 text-neutral-500 shadow-none dark:shadow-none hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-700 lg:flex-wrap lg:justify-start lg:py-4"
         data-twe-navbar-ref
